@@ -1,5 +1,5 @@
 1- Asterisk 200 OK SDP contains: c=IN IP4  the VM Private IP
---> Azure is performing NAT, and Asterisk is happily exchanging media in this simple scenario. However, from an engineering perspective, this is something we should improve before calling the project "production-ready."
+--> Azure is performing NAT, and Asterisk is happily exchanging media in this simple scenario. However, from an engineering perspective, this is something we should improve.
 --> In a production deployment, we'd normally configure Asterisk to advertise its public address in SDP so remote peers don't see a private IP.
 --> That means setting values such as:
 
