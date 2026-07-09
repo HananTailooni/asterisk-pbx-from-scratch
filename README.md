@@ -1,4 +1,4 @@
-# asterisk-pbx-from-scratch
+# Asterisk-pbx-from-scratch
 # Overview 
 This project documents the design and implementation of a production-style Asterisk PBX hosted on Microsoft Azure.  The objective is not only to install Asterisk, but to understand how enterprise voice platforms communicate with SIP carriers and process inbound and outbound calls.
 
