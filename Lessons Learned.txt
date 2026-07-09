@@ -1,0 +1,16 @@
+1- Asterisk 200 OK SDP contains: c=IN IP4 10.1.0.4 ( this is the VM Private IP)
+--> Azure is performing NAT, and Asterisk is happily exchanging media in this simple scenario. However, from an engineering perspective, this is something we should improve before calling the project "production-ready."
+--> In a production deployment, we'd normally configure Asterisk to advertise its public address in SDP so remote peers don't see a private IP.
+--> That means setting values such as:
+
+external_media_address=20.124.106.28
+external_signaling_address=20.124.106.28
+local_net=10.1.0.0/16
+
+Why didn't it break?
+
+Because:
+
+Telnyx is tolerant of NAT behavior.
+Azure's networking handled the translation.
+Call was simple (carrier ↔ Asterisk with playback).
