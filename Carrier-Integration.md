@@ -25,6 +25,7 @@ If someone calls
 
 Telnyx will attempt toward Asterisk
 INVITE sip:+13152735797@20.124.106.28
+
 ------------------------------------------------------
 
 - [x] Step2: Atserisk Config
