@@ -1,0 +1,27 @@
+ ** Why IP Authentication? **
+
+1- No SIP REGISTER process.
+2- Simpler authentication model.
+3- Common in enterprise environments.
+4- Similar to how many telecom providers provision SIP trunks.
+
+** Why separate dialplan contexts? **
+This provides a security boundary between external callers and internal resources.
+External callers should never have unrestricted access to internal extensions, feature codes, voicemail access numbers, or administrative dialplan entries. 
+All inbound calls are first processed by the from-telnyx context, where routing decisions are explicitly controlled.
+
+** Why descriptive endpoint names?** 
+Object names improve readability and maintainability.
+
+** Why direct_media=no? ** 
+By setting:
+direct_media=no
+all RTP media flows through Asterisk.
+Phone
+   │
+Asterisk
+   │
+Carrier
+
+instead of
+Phone ──────> Carrier
