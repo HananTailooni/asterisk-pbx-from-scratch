@@ -3,8 +3,8 @@
 --> In a production deployment, we'd normally configure Asterisk to advertise its public address in SDP so remote peers don't see a private IP.
 --> That means setting values such as:
 
-external_media_address=20.124.106.28
-external_signaling_address=20.124.106.28
+external_media_address= vm public IP
+external_signaling_address=  vm public IP
 local_net=10.1.0.0/16
 
 Why didn't it break?
