@@ -14,6 +14,7 @@ Telnyx is tolerant of NAT behavior.
 Azure's networking handled the translation.
 Call was simple (carrier ↔ Asterisk with playback).
 
+══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
 
 2- RFC 3261 treats the Address of Record (AOR) as the logical identity of the user. During REGISTER, the To: header identifies the AOR.
 To: <sip:1000@ PBX Public IP >
@@ -56,3 +57,14 @@ AOR '' not found
 After investigating the SIP REGISTER flow and RFC 3261, I discovered that during registration Asterisk derives the Address of Record (AOR) from the REGISTER request (specifically the To header).
 Changing the AOR object name to match the SIP username (1000) resolved the issue immediately.
 This was an important lesson in how PJSIP registrar processing differs from normal endpoint routing.
+
+
+══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+3- Applying a PJSIP ACL to an IP-identified trunk endpoint prevented local SIP endpoints from registering. Because the global endpoint identifier order was ip,username,anonymous, incoming REGISTER requests appeared to be evaluated against the ACL during endpoint identification. Removing the ACL restored normal registration. Azure NSG rules were used instead to restrict inbound SIP traffic from the carrier.
+
+Applied NSG rules in Azure vm nsg instead of ACLs in Asterisk PBX.
+
+
+
+
