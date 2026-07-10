@@ -7,10 +7,52 @@ external_media_address= vm public IP
 external_signaling_address=  vm public IP
 local_net=10.1.0.0/16
 
-Why didn't it break?
-
+🎯 Why didn't it break?
 Because:
 
 Telnyx is tolerant of NAT behavior.
 Azure's networking handled the translation.
 Call was simple (carrier ↔ Asterisk with playback).
+
+
+2- RFC 3261 treats the Address of Record (AOR) as the logical identity of the user. During REGISTER, the To: header identifies the AOR.
+To: <sip:1000@ PBX Public IP >
+---- > So the registrar was looking for an AOR named: 1000 
+
+When I had:
+[1000]
+type=endpoint
+aors=1000-aor
+[1000-aor]
+type=aor
+
+the endpoint knew it referenced 1000-aor, but the registrar's lookup path for REGISTER wasn't simply following the endpoint's aors= list in the way we expected.
+
+I then changed it to:
+
+[1000]
+type=endpoint
+aors=1000
+[1000]
+type=aor
+[1000]
+type=auth
+
+🎯Results: 
+everything aligned with the AOR derived from the REGISTER request, and registration succeeded.
+
+### PJSIP Endpoint vs AOR Naming
+Initially I used descriptive object names:
+Endpoint: phone-1000
+Auth: 1000-auth
+AOR: 1000-aor
+Although the endpoint correctly referenced the AOR through:
+aors=1000-aor
+
+the REGISTER transaction consistently failed with:
+
+find_registrar_aor:
+AOR '' not found
+After investigating the SIP REGISTER flow and RFC 3261, I discovered that during registration Asterisk derives the Address of Record (AOR) from the REGISTER request (specifically the To header).
+Changing the AOR object name to match the SIP username (1000) resolved the issue immediately.
+This was an important lesson in how PJSIP registrar processing differs from normal endpoint routing.
