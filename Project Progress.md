@@ -8,8 +8,8 @@
 - [x] Enterprise SIP Trunk (Telnyx)
 - [x] Inbound PSTN Calls
 - [x] SIP Debugging
-- [ ] Softphone Registration
-- [ ] Outbound PSTN
+- [x] Softphone Registration
+- [x] Outbound PSTN
 - [ ] IVR
 - [ ] Ring Groups
 - [ ] Queues
