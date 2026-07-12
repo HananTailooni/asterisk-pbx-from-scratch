@@ -32,4 +32,4 @@
         • Call Queues
         • AI Voice Agent
         • Speech-to-Text
-        • CRM Integration
+ 
