@@ -24,7 +24,7 @@ If someone calls
 +1 XXX XXX XXXX
 
 Telnyx will attempt toward Asterisk
-INVITE sip:+13152735797@20.124.106.28
+INVITE sip:+1315xxxxxxx@20.124.106.28
 
 ------------------------------------------------------
 
@@ -92,4 +92,4 @@ type=identify
 
 - [x] ===== Incoming Call From Telnyx =====
 - [x] CallerID: +13155551234
-- [x] Dialed Number: +13152735797
+- [x] Dialed Number: +1315XXXXXX
