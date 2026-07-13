@@ -3,18 +3,18 @@
 This project documents the design and implementation of a production-style Asterisk PBX hosted on Microsoft Azure.  The objective is not only to install Asterisk, but to understand how enterprise voice platforms communicate with SIP carriers and process inbound and outbound calls.
 
 # Technologies
-- [x] Microsoft Azure
-- [x] Ubuntu Server
-- [x] Asterisk 20
-- [x] PJSIP
-- [x] SIP
-- [x] RTP
-- [x] Telnyx SIP Trunk
-- [x] Linux
-- [x] Networking
+-  Microsoft Azure
+-  Ubuntu Server
+-  Asterisk 20
+-  PJSIP
+-  SIP
+-  RTP
+-  Telnyx SIP Trunk
+-  Linux
+-  Networking
 
 # Architecture
-                     PSTN
+                                   PSTN
                        │
                        ▼
                 Telnyx SIP Cloud
@@ -48,6 +48,7 @@ Extension    Extension    Microsoft Teams
     • Call Queues
     • AI Voice Agent
     • Speech-to-Text
+
 
 
 
