@@ -14,7 +14,7 @@ This project documents the design and implementation of a production-style Aster
 -  Networking
 
 # Architecture
-                                   PSTN
+                     PSTN
                        │
                        ▼
                 Telnyx SIP Cloud
