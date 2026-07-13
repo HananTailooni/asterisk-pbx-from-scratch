@@ -14,19 +14,41 @@ This project documents the design and implementation of a production-style Aster
 - [x] Networking
 
 # Architecture
+                     PSTN
+                       │
+                       ▼
+                Telnyx SIP Cloud
+                       │
+                Enterprise SIP Trunk
+                       │
+      ┌───────────────────────────────────┐
+      │      Azure Ubuntu VM (Azure)      │
+      │                                   │
+      │         Asterisk PBX              │
+      │                                   │
+      │  • PJSIP                          │
+      │  • Dialplan                       │
+      │  • SIP Routing                    │
+      └──────────────┬────────────────────┘
+                     │
+    ┌────────────────┼────────────────┐
+    │                │                │
+    ▼                ▼                ▼
+Extension    Extension    Microsoft Teams
+  (MicroSIP)      (MicroSIP)      (Operator Connect)
+       │                               ▲
+       └──────── SIP Calls ────────────┘
 
-                    PSTN
-                      │
-                 Telnyx SIP
-                      │
-            Enterprise SIP Trunk
-                      │
-          Azure Ubuntu Virtual Machine
-                      │
-                 Asterisk PBX
-              ┌────────┴────────┐
-              │                 │
-                Internal Users  
+──────────────────────────────────────────────────────
+
+            🚧 Next Project Phase
+
+    • IVR
+    • Voicemail
+    • Call Queues
+    • AI Voice Agent
+    • Speech-to-Text
+
 
 
 
